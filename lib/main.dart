@@ -27,7 +27,7 @@ class App extends StatelessWidget {
           create: (context) => AuthBloc(userRepository: userRepository),
         ),
         // BlocProvider<ThemeCubit>(
-        //   create: (context) => ThemeCubit(), // Initialize ThemeCubit
+        //   create: (context) => ThemeCubit(),
         // ),
       ],
       child: const MyAppView(),

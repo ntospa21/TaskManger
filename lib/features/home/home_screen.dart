@@ -359,9 +359,7 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           },
           onEdit: () {
-            context.router
-                .push(EditTaskRoute(task: task, userId: userId!))
-                .then((_) {
+            context.router.push(WelcomeRoute()).then((_) {
               _localTaskStorage.addEditToSyncQueue(task);
               _homeBloc.add(FetchTasks(userId!));
             });

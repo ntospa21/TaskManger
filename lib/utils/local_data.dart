@@ -16,7 +16,14 @@ class LocalTaskStorage {
     return [];
   }
 
-  // Add edited task to sync queue
+  Future<void> saveTask(Task task) async {
+    final prefs = await SharedPreferences.getInstance();
+    final tasks = await loadTasks();
+    tasks.add(task); // Add the new task to the list
+    final tasksJson = jsonEncode(tasks.map((e) => e.toJson()).toList());
+    await prefs.setString(_tasksKey, tasksJson);
+  }
+
   Future<void> addEditToSyncQueue(Task editedTask) async {
     final prefs = await SharedPreferences.getInstance();
     final currentQueue = await loadSyncQueue();
@@ -36,13 +43,12 @@ class LocalTaskStorage {
     // Remove the task from the queue
     final updatedQueue =
         currentQueue.where((task) => task['taskId'] != taskId).toList();
-    await saveSyncQueue(
-        updatedQueue); // Save the updated queue back to SharedPreferences
+    await saveSyncQueue(updatedQueue);
   }
 
   Future<void> addToSyncQueue(String taskId) async {
     final prefs = await SharedPreferences.getInstance();
-    final currentQueue = await loadSyncQueue(); // Load current sync queue
+    final currentQueue = await loadSyncQueue();
     currentQueue.add({'taskId': taskId, 'action': 'delete'});
 
     await saveSyncQueue(currentQueue);

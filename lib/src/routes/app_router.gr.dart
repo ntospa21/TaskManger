@@ -16,7 +16,7 @@ import 'package:task_manager/features/login/login_screen.dart' as _i3;
 import 'package:task_manager/features/sign_up/sign_up_screen.dart' as _i4;
 import 'package:task_manager/features/task/edit_task.dart' as _i1;
 import 'package:task_manager/features/task/task_creation.dart' as _i5;
-import 'package:task_manager/features/welcome/welcome_screen.dart' as _i6;
+import 'package:task_manager/features/welcome/welcome.dart' as _i6;
 
 abstract class $AppRouter extends _i7.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -61,7 +61,7 @@ abstract class $AppRouter extends _i7.RootStackRouter {
     WelcomeRoute.name: (routeData) {
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.WelcomeScreen(),
+        child: _i6.WelcomePage(),
       );
     },
   };
@@ -167,7 +167,7 @@ class TaskCreation extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.WelcomeScreen]
+/// [_i6.WelcomePage]
 class WelcomeRoute extends _i7.PageRouteInfo<void> {
   const WelcomeRoute({List<_i7.PageRouteInfo>? children})
       : super(

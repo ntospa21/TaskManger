@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -8,7 +9,9 @@ import 'package:task_manager/src/di/locator.dart';
 import 'package:task_manager/utils/local_data.dart';
 import 'package:task_manager/widgets/modal.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:task_manager/widgets/widgets.dart';
 
+@RoutePage()
 class EditTaskPage extends StatefulWidget {
   final Task task;
   final String userId;
@@ -81,10 +84,11 @@ class _EditTaskPageState extends State<EditTaskPage> {
                                 fontSize: 20.0, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 16.0),
-                          TextField(
+                          SBTextField(
                             controller: nameController,
-                            decoration:
-                                const InputDecoration(labelText: 'Task Name'),
+                            name: "Task name",
+                            inputType: TextInputType.name,
+                            fieldType: TextFieldType.simple,
                           ),
                           const SizedBox(height: 16.0),
                           // Category Dropdown

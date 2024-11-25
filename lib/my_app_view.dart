@@ -14,9 +14,8 @@ class MyAppView extends StatelessWidget {
 
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        // Navigate only when authentication state changes
         if (state.status == AuthenticationStatus.authenticated) {
-          appRouter.replaceAll([const HomeRoute()]);
+          appRouter.replaceAll([const WelcomeRoute()]);
         } else if (state.status == AuthenticationStatus.unauthenticated) {
           appRouter.replaceAll([const LoginRoute()]);
         }
